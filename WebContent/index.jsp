@@ -29,9 +29,24 @@
 </head>
 <body class="cls">
 	<form action="Validate" method="post" onsubmit="return myFunction()">
-		Username<input type="text" name="uname" id="uname" /> password<input
-			type="password" name="pwd" id="pwd" /> <input type="submit" />
+		<table align="center">
+			<tr>
+				<td>Username</td>
+				<td><input type="text" name="uname" id="uname" /></td>
+			</tr>
+
+			<tr>
+				<td>password</td>
+				<td><input type="password" name="pwd" id="pwd" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" /></td>
+			</tr>
+		</table>
 	</form>
-	<a href="Newuser.jsp">Signup</a>
+
+
+	<p align="center"><a href="Newuser.jsp" style="float: ce">Signup</a></p>
 </body>
 </html>

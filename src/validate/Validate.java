@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/Validate")
 public class Validate extends HttpServlet {
@@ -18,7 +19,7 @@ public class Validate extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		
+
 		PrintWriter out = response.getWriter();
 
 		String user = request.getParameter("uname");
@@ -26,6 +27,8 @@ public class Validate extends HttpServlet {
 
 		if (user.equals("admin") && pass.equals("admin123")) {
 			out.println("welcome Admin");
+			HttpSession session = request.getSession(true);
+			session.setAttribute("username", user);
 			RequestDispatcher rd = request.getRequestDispatcher("AdminHome.jsp");
 			rd.forward(request, response);
 		} else {
@@ -46,6 +49,9 @@ public class Validate extends HttpServlet {
 						out.println("welcome User");
 
 						flag = 1;
+
+						HttpSession session = request.getSession(true);
+						session.setAttribute("username", user);
 						RequestDispatcher rd = request.getRequestDispatcher("UserHome.jsp");
 						rd.forward(request, response);
 					}
